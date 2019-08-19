@@ -6,44 +6,44 @@ import { map } from 'rxjs/Operators'
 @Injectable({
   providedIn: 'root'
 })
-export class BookServiceService {
+export class TaskServiceService {
 
   constructor(private http: Http) { }
 
-  //get list of books
-  getBooks(){
-    console.log("inside get books");
-    return this.http.get("http://localhost:8085/bookstore/all")
+  //get list of tasks
+  getTasks(){
+    console.log("inside get tasks");
+    return this.http.get("http://localhost:8086/taskmanager/all")
       .pipe(map (( resp ) =>{
         console.log(resp);
         return resp.json();
       }))
   }
 
-  // Add book
-  addBook(bookData){
-    console.log(bookData);
-    return this.http.post("http://localhost:8085/bookstore/add",bookData)
+  // Add task
+  addTask(taskData){
+    console.log(taskData);
+    return this.http.post("http://localhost:8086/taskmanager/add",taskData)
                     .pipe(map((resp) => {
                       console.log(resp);
                       return resp.toString();
                     }))
   }
 
-  //delete Book
-  deleteBook(book){
-    console.log(book);
-    return this.http.delete('http://localhost:8085/bookstore/delete/' + book.book_id)
+  //delete task
+  deleteTask(task){
+    console.log(task);
+    return this.http.delete('http://localhost:8086/taskmanager/delete/' + task.task_id)
                     .pipe(map((resp) => {
                       console.log(resp);
                       return resp.toString();
                     }))
   }
 
-  //update Book
-  updateBook(bookData){
-    console.log(bookData);
-    return this.http.put("http://localhost:8085/bookstore/update",bookData)
+  //update task
+  updateTask(taskData){
+    console.log(taskData);
+    return this.http.put("http://localhost:8086/taskmanager/update",taskData)
                     .pipe(map((resp) => {
                       console.log(resp);
                       return resp.toString();

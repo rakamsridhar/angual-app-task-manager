@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SubjectComponent } from './subject/subject.component'
-import { BookComponent } from './book/book.component'
+import { AddTaskComponent } from './addtask/addtask.component'
+import { AddUserComponent } from './add-user/add-user.component'
+import { AddProjectComponent } from './add-project/add-project.component'
+import { TaskComponent } from './task/task.component'
 
 const routes: Routes = [
-  {path : 'subject', component: SubjectComponent},
-  {path : 'book', component: BookComponent}
+  {path : 'addtask', component: AddTaskComponent},
+  {path : 'adduser', component: AddUserComponent},
+  {path : 'addproject', component: AddProjectComponent},
+  {path : 'task', component: TaskComponent}
 ];
 
 @NgModule({

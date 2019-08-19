@@ -1,0 +1,135 @@
+<p>
+    list of Tasks :
+</p>
+
+<div *ngIf="isDeleted"> Task Deleted Successfully</div>
+
+<table class="table">
+    <thead>
+      <tr>
+          <th scope="col">Task ID</th>
+        <th scope="col">Task</th>
+        <th scope="col">Parent</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Start</th>
+        <th scope="col">End</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let task of taskList">
+      <tr>
+        <th scope="row">{{ task.task_id }}</th>        
+        <td>{{ task.task }}</td>
+        <td>{{ task.parent_id }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.start_date }}</td>
+        <td>{{ task.end_date }}</td>        
+       <td><input type="checkbox" (click)="addToDelete(task)"></td>       
+      </tr>
+    </tbody>
+  </table>
+
+  
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add Task
+  </button>&nbsp;
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update Task</button>&nbsp;
+  <button class="btn btn-primary" type="submit" (click)="deleteTask()">Delete Task</button>
+  
+  
+  <!--Add Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Task</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div ng-if="isSaved"> Task Added Successfully</div>
+        <form #f="ngForm" class="form-group" (ngSubmit)=addTask(f)>
+        <div class="modal-body">
+            
+                <div>
+                    <label for = "task"> Task</label>
+                    <input type = "text" class = "form-control" ngModel name = "task" placeholder = "Enter Task Name">
+                 </div>
+                 <div>
+                    <label for = "priority"> Priority</label>
+                    <input id="ex6" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="3"/>
+                    <!--<input type = "text" class = "form-control" ngModel name = "priority" placeholder = "Enter Enter Priority">-->
+                 </div>
+                 <div>
+                    <label for = "parent_id"> Parent Task</label>
+                    <input type = "text" class = "form-control" ngModel name = "parent_id" placeholder = "Enter Parent ID">
+                 </div>
+                 <div>
+                    <label for = "start_date"> Start Date</label>
+                    <input type = "text" class = "form-control" ngModel name = "start_date" placeholder = "Enter Start Date">
+                 </div>
+                 <div>
+                    <label for = "end_date">End Date</label>
+                    <input type = "text" class = "form-control" ngModel name = "end_date" placeholder = "Enter End Date">
+                 </div>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Update Modal -->
+  <div *ngIf="selectedTask !== undefined">
+  <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">Update Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div *ngIf="isUpdated"> Task Updated Successfully</div>
+          <form #f="ngForm" class="form-group" (ngSubmit)=updateTask(f)>
+          <div class="modal-body">
+                  <div>
+                      <input type = "hidden" class = "form-control" [(ngModel)]="selectedTask.task_id" name = "task_id">
+                  </div>
+                  <div>
+                      <label for = "task"> Task</label>
+                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.task" name = "task">
+                   </div>
+                   <div>
+                      <label for = "priority"> Priority</label>
+                      <input id="ex6" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3"/>
+                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.priority" name = "priority">
+                   </div>
+                   <div>
+                      <label for = "parent_id"> Parent Task</label>
+                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.parent_id" name = "parent_id">
+                   </div>
+                   <div>
+                      <label for = "start_date"> Start Date</label>
+                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.start_date" name = "start_date">
+                   </div>
+                   <div>
+                      <label for = "end_date">End Date</label>
+                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.end_date" name = "end_date">
+                   </div>
+              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>

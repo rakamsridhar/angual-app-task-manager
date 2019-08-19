@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
-import { BookServiceService } from 'src/app/services/book-service.service'
+import { TaskServiceService } from 'src/app/services/task-service.service'
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrls: ['./task.component.css']
 })
-export class BookComponent implements OnInit {
+export class TaskComponent implements OnInit {
 
-  book_id:string;
-  title:string;
-  price:string;
-  volume:string;
-  publishedDate: any;
+  task_id:string;
+  parent_id:string;
+  task:string;
+  start_date:any;
+  end_date: any;
+  priority: string;
   
   
   isChecked:boolean = false;
@@ -21,74 +22,74 @@ export class BookComponent implements OnInit {
   isUpdated:boolean = false;
   isDeleted:boolean = false;
 
-  bookList:[1000];
+  taskList:[1000];
   
- selectedBook: BookComponent;
+ selectedTask: TaskComponent;
 
-  constructor(private bookService:BookServiceService) {
+  constructor(private taskService:TaskServiceService) {    
     console.log("inside constructor");
    }
 
-   // automatically called by Angular ( On Load )- its a life cycle book
-   // always called after the constructor when the book component is initialized
+   // automatically called by Angular ( On Load )- its a life cycle task
+   // always called after the constructor when the task component is initialized
   ngOnInit() { 
-    this.getBooks(); 
+    this.getTasks(); 
     console.log("inside ng on init");
   }
 
-  //get list of available books
-  getBooks(){
+  //get list of available tasks
+  getTasks(){
     this.isSaved = false;
     this.isUpdated = false;
     this.isDeleted = false;    
-    this.bookService.getBooks()
+    this.taskService.getTasks()
     .subscribe((resp) => {
         console.log(resp);
-        this.bookList = resp;                     
+        this.taskList = resp;                     
     });
   }
   //1. send request to service
   //2. get the response.
-  addBook(formData: NgForm){
-    this.bookService.addBook(formData.value)
+  addTask(formData: NgForm){
+    this.taskService.addTask(formData.value)
                     .subscribe( ( resp ) => {
                       console.log(resp);
                       if(resp){
                         this.isSaved = true;
                       }
-                      this.getBooks();
+                      this.getTasks();
                     });
     console.log(formData)
   }
 
-  addToDelete(book: BookComponent){
+  addToDelete(task: TaskComponent){
   //  if(this.isChecked == true){
-      this.selectedBook = book;
+      this.selectedTask = task;
   //  }
     
   }
 
-  // delete book
-  deleteBook(){    
-    this.bookService.deleteBook(this.selectedBook)
+  // delete task
+  deleteTask(){    
+    this.taskService.deleteTask(this.selectedTask)
                   .subscribe((resp) => {
                   console.log(resp);
                   if(resp){
                     this.isDeleted = true;
                   }
-                  this.getBooks();
+                  this.getTasks();
               })
     
   }
 
-  updateBook(formData: NgForm){
-    this.bookService.updateBook(formData.value)
+  updateTask(formData: NgForm){
+    this.taskService.updateTask(formData.value)
                     .subscribe( ( resp ) => {
                       console.log(resp);
                       if(resp){
                         this.isUpdated = true;
                       }
-                      this.getBooks();
+                      this.getTasks();
                     });
     console.log(formData)
   }
