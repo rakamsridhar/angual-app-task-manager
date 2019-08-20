@@ -31,6 +31,7 @@ export class AddUserComponent implements OnInit {
 
 
   ngOnInit() {
+    this.toggleEdit = false;
     this.getUsers(); 
     console.log("inside ng on init");
   }
@@ -48,7 +49,7 @@ export class AddUserComponent implements OnInit {
    //get list of available users
    getUsers(){
     this.isSaved = false;
-    this.toggleEdit = false;    
+    //this.toggleEdit = false;    
     this.userService.getUsers()
     .subscribe((resp) => {
         console.log(resp);
@@ -121,6 +122,7 @@ export class AddUserComponent implements OnInit {
   resetForm(){
     this.userForm.reset();
     this.buttonText = 'Add';
+    this.toggleEdit = false;
   }
 
 
