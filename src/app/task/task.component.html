@@ -51,26 +51,37 @@
         <form #f="ngForm" class="form-group" (ngSubmit)=addTask(f)>
         <div class="modal-body">
             
-                <div>
-                    <label for = "task"> Task</label>
-                    <input type = "text" class = "form-control" ngModel name = "task" placeholder = "Enter Task Name">
+                <div class="form-group row">
+                    <label for = "task" class="col-sm-4 col-form-label"> Task</label>
+                    <div class="col-sm-8">
+                      <input type = "text" class = "form-control" ngModel name = "task" placeholder = "Enter Task Name">
+                    </div>
                  </div>
-                 <div>
-                    <label for = "priority"> Priority</label>
-                    <input id="ex6" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="3"/>
-                    <!--<input type = "text" class = "form-control" ngModel name = "priority" placeholder = "Enter Enter Priority">-->
+                 <div class="form-group row">
+                    <label for = "priority" class="col-sm-4 col-form-label"> Priority</label>
+                    <div class="col-sm-8">
+                        <input type = "text" class = "form-control" ngModel name = "priority" placeholder = "Enter Enter Priority">
+                        <!--<input id="ex6" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="3"/>-->
+                    </div>
+                    
                  </div>
-                 <div>
-                    <label for = "parent_id"> Parent Task</label>
-                    <input type = "text" class = "form-control" ngModel name = "parent_id" placeholder = "Enter Parent ID">
+                 <div class="form-group row">
+                    <label for = "parent_id" class="col-sm-4 col-form-label"> Parent Task</label>
+                    <div class="col-sm-8">
+                      <input type = "text" class = "form-control" ngModel name = "parent_id" placeholder = "Enter Parent ID">
+                    </div>
                  </div>
-                 <div>
-                    <label for = "start_date"> Start Date</label>
-                    <input type = "text" class = "form-control" ngModel name = "start_date" placeholder = "Enter Start Date">
+                 <div class="form-group row">
+                    <label for = "start_date" class="col-sm-4 col-form-label"> Start Date</label>
+                    <div class="col-sm-8">
+                      <input type = "text" class = "form-control" ngModel name = "start_date" placeholder = "Enter Start Date">
+                    </div>
                  </div>
-                 <div>
-                    <label for = "end_date">End Date</label>
-                    <input type = "text" class = "form-control" ngModel name = "end_date" placeholder = "Enter End Date">
+                 <div class="form-group row">
+                    <label for = "end_date"  class="col-sm-4 col-form-label">End Date</label>
+                    <div class="col-sm-8">
+                      <input type = "text" class = "form-control" ngModel name = "end_date" placeholder = "Enter End Date">
+                    </div>
                  </div>
             
         </div>
@@ -98,29 +109,38 @@
           <div *ngIf="isUpdated"> Task Updated Successfully</div>
           <form #f="ngForm" class="form-group" (ngSubmit)=updateTask(f)>
           <div class="modal-body">
-                  <div>
+                  <div class="form-group row">
                       <input type = "hidden" class = "form-control" [(ngModel)]="selectedTask.task_id" name = "task_id">
                   </div>
-                  <div>
-                      <label for = "task"> Task</label>
-                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.task" name = "task">
+                  <div class="form-group row">
+                      <label for = "task" class="col-sm-4 col-form-label"> Task</label>
+                      <div class="col-sm-8">
+                        <input type = "text" class = "form-control" [(ngModel)]="selectedTask.task" name = "task">
+                      </div>
                    </div>
-                   <div>
-                      <label for = "priority"> Priority</label>
-                      <input id="ex6" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3"/>
-                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.priority" name = "priority">
+                   <div class="form-group row">
+                      <label for = "priority" class="col-sm-4 col-form-label"> Priority</label>
+                      <div class="col-sm-8">                        
+                        <input type = "text" class = "form-control" [(ngModel)]="selectedTask.priority" name = "priority">
+                    </div>
                    </div>
-                   <div>
-                      <label for = "parent_id"> Parent Task</label>
-                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.parent_id" name = "parent_id">
+                   <div class="form-group row">
+                      <label for = "parent_id" class="col-sm-4 col-form-label"> Parent Task</label>
+                      <div class="col-sm-8">
+                        <input type = "text" class = "form-control" [(ngModel)]="selectedTask.parent_id" name = "parent_id">
+                    </div>
                    </div>
-                   <div>
-                      <label for = "start_date"> Start Date</label>
-                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.start_date" name = "start_date">
+                   <div class="form-group row">
+                      <label for = "start_date" class="col-sm-4 col-form-label"> Start Date</label>
+                      <div class="col-sm-8">
+                        <input type = "text" class = "form-control" [(ngModel)]="selectedTask.start_date" name = "start_date">
+                      </div>  
                    </div>
-                   <div>
-                      <label for = "end_date">End Date</label>
-                      <input type = "text" class = "form-control" [(ngModel)]="selectedTask.end_date" name = "end_date">
+                   <div class="form-group row">
+                      <label for = "end_date" class="col-sm-4 col-form-label">End Date</label>
+                      <div class="col-sm-8">
+                        <input type = "text" class = "form-control" [(ngModel)]="selectedTask.end_date" name = "end_date">
+                      </div>
                    </div>
               
           </div>
