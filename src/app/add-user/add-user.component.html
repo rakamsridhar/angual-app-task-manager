@@ -43,6 +43,9 @@
     <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortUserByName('first_name')">First Name</button>
     <span class="col-lg-1"></span>
     <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortUserByName('last_name')">Last Name</button>
+    <span class="col-lg-1"></span>
+    <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortUserByName('employee_id')">ID</button>
+    
   </div>
 
   <div *ngFor="let user of userList">
