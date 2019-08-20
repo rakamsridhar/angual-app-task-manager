@@ -36,20 +36,29 @@
     <p>
       list of Users :
   </p>
-  
-  
+
+  <div class="input-group mb-3">
+    <span class="input-group-text col-lg-2" id="basic-addon1">Sort By: </span>
+    <span class="col-lg-1"></span>
+    <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortUserByName('first_name')">First Name</button>
+    <span class="col-lg-1"></span>
+    <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortUserByName('last_name')">Last Name</button>
+  </div>
+
   <div *ngFor="let user of userList">
-    <div class="bottom">   
+    <div class="bottom">
+        <div class="input-group mb-3"></div>   
       <div class="input-group mb-3">
-          <span class="input-group-text col-lg-4" id="basic-addon1">First Name</span>
-          <span class="input-group-text col-lg-4" id="firstName" name="firstName">{{ user.first_name }}</span>
+          <span class="input-group-text col-lg-3" id="basic-addon1">First Name: </span>
+          <span class="input-group-text col-lg-4" id="firstName" name="firstName">{{ user.first_name }}</span>         
+          
       </div>
       <div class="input-group mb-3">
-          <span class="input-group-text col-lg-4" id="basic-addon1">Last Name</span>
+          <span class="input-group-text col-lg-3" id="basic-addon1">Last Name: </span>
           <span class="input-group-text col-lg-4" id="basic-addon1">{{ user.last_name }}</span>
       </div>
       <div class="input-group mb-3">
-          <span class="input-group-text col-lg-4" id="basic-addon1">Employee ID</span>
+          <span class="input-group-text col-lg-3" id="basic-addon1">Employee ID: </span>
           <span class="input-group-text col-lg-4" id="basic-addon1">{{ user.employee_id }}</span>
       </div> 
       <button type="button" class="btn btn-danger btn-primary-spacing" (click)="deleteUser(user)">Delete</button>   

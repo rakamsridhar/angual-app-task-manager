@@ -49,4 +49,14 @@ export class UserService {
                       return resp.toString();
                     }))
   }
+
+    //sort user
+  sortUserByName(name){
+      console.log(name);
+      return this.http.get('http://localhost:8086/users/sortByName?name=' + name )
+                    .pipe(map (( resp ) =>{
+                      console.log(resp);
+                      return resp.json();
+                      }))
+  }
 }

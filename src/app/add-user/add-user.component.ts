@@ -96,6 +96,16 @@ export class AddUserComponent implements OnInit {
     
   }
 
+  sortUserByName(name){
+    console.log("inside sort by name function");
+    this.userService.sortUserByName(name)
+    .subscribe((resp) => {
+        console.log(resp);
+        this.userList = resp;                     
+    });
+    //console.log(name);
+}
+
   editUser(user){
     console.log("inside edit values");
     this.toggleEdit = true;
