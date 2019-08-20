@@ -21,6 +21,7 @@ export class TaskComponent implements OnInit {
   isSaved:boolean = false;
   isUpdated:boolean = false;
   isDeleted:boolean = false;
+  isTaskEnded:boolean = false;
 
   taskList:[1000];
   
@@ -92,5 +93,17 @@ export class TaskComponent implements OnInit {
                       this.getTasks();
                     });
     console.log(formData)
+  }
+
+  endTask(task){
+    this.taskService.endTask(task)
+    .subscribe((resp) => {
+    console.log(resp);
+    if(resp){
+      this.isTaskEnded = true;
+    }
+    this.getTasks();
+})
+
   }
 }

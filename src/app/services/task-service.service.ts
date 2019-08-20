@@ -49,4 +49,15 @@ export class TaskServiceService {
                       return resp.toString();
                     }))
   }
+
+  endTask(task){
+    console.log(task);
+    task.status = 'COMPLETED';
+    console.log(task);
+    return this.http.put('http://localhost:8086/taskmanager/update/', task)
+                    .pipe(map((resp) => {
+                      console.log(resp);
+                      return resp.toString();
+                    }))
+  }
 }
