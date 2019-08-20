@@ -113,6 +113,16 @@ export class AddProjectComponent implements OnInit {
     });
   }
 
+  sortProjects(name){
+    console.log("inside sort by name function");
+    this.projectService.sortProjects(name)
+    .subscribe((resp) => {
+        console.log(resp);
+        this.projectList = resp;                     
+    });
+    //console.log(name);
+}
+
   resetForm(){
     this.projectForm.reset();
     this.buttonText = 'Add';

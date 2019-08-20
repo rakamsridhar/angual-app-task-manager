@@ -49,4 +49,14 @@ export class ProjectService {
                         return resp.toString();
                       }))
     }
+
+    //sort projects
+    sortProjects(name){
+      console.log(name);
+      return this.http.get('http://localhost:8086/projects/sort?name=' + name )
+                    .pipe(map (( resp ) =>{
+                      console.log(resp);
+                      return resp.json();
+                      }))
+  }    
 }
