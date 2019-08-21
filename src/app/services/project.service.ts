@@ -58,5 +58,14 @@ export class ProjectService {
                       console.log(resp);
                       return resp.json();
                       }))
-  }    
+  }
+     //sort projects
+    searchProjectByName(name){
+        console.log(name);
+        return this.http.get('http://localhost:8086/projects/searchByName?name=' + name )
+                      .pipe(map (( resp ) =>{
+                        console.log(resp);
+                        return resp.json();
+                        }))
+    }
 }

@@ -44,12 +44,10 @@
 
 
 <div class="input-group mb-3">
-    <span class="input-group-text col-lg-2" id="basic-addon1">Sort By: </span>
-    <span class="col-lg-1"></span>
+    <input class="form-control" type="text" (keyup)="onKey($event)" placeholder="Search">
+    <button type="button" class="btn btn-secondary btn-primary-spacing disabled">Sort By:</button>
     <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortProjects('start_date')">Start Date</button>
-    <span class="col-lg-1"></span>
     <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortProjects('end_date')">End Date</button>
-    <span class="col-lg-1"></span>
     <button type="button" class="btn btn-primary btn-primary-spacing" (click)="sortProjects('priority')">Priority</button>    
 </div>
 

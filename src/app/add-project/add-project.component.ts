@@ -129,4 +129,19 @@ export class AddProjectComponent implements OnInit {
     this.toggleEdit = false;
   }
 
+  onKey(event: any) { // without type info
+    console.log(event.target.value);
+    this.searchProjectByName(event.target.value);
+  }
+  
+  searchProjectByName(name){
+    console.log("inside search by name function");
+    this.projectService.searchProjectByName(name)
+    .subscribe((resp) => {
+        console.log(resp);
+        this.projectList = resp;                     
+    });
+    //console.log(name);
+  }
+
 }

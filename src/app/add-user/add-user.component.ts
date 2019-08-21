@@ -106,6 +106,21 @@ export class AddUserComponent implements OnInit {
     //console.log(name);
 }
 
+onKey(event: any) { // without type info
+  console.log(event.target.value);
+  this.searchUserByName(event.target.value);
+}
+
+searchUserByName(name){
+  console.log("inside search by name function");
+  this.userService.searchUserByName(name)
+  .subscribe((resp) => {
+      console.log(resp);
+      this.userList = resp;                     
+  });
+  //console.log(name);
+}
+
   editUser(user){
     console.log("inside edit values");
     this.toggleEdit = true;
@@ -134,6 +149,7 @@ export class AddUserComponent implements OnInit {
     this.buttonText = 'Add';
     this.toggleEdit = false;
   }
+
 
 
 

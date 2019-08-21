@@ -59,4 +59,14 @@ export class UserService {
                       return resp.json();
                       }))
   }
+
+  searchUserByName(name){
+    console.log(name);
+    return this.http.get('http://localhost:8086/users/searchByName?name=' + name )
+                  .pipe(map (( resp ) =>{
+                    console.log(resp);
+                    return resp.json();
+                    }))
+
+  }
 }
